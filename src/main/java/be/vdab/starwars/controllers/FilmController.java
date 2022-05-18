@@ -70,7 +70,7 @@ class FilmController {
         if (scoreService.findScoreByGebruikerIdAndFilmid(
                 gebruikerService.findByEmail(principal.getName()).get().getId(), id).isEmpty()) {
             scoreService.create(new Score(
-                    id, scoreForm.getScore().intValue(), gebruikerService.findByEmail(principal.getName()).get()));
+                    id, scoreForm.getScore(), gebruikerService.findByEmail(principal.getName()).get()));
         }
         return "redirect:/films";
     }

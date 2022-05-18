@@ -10,12 +10,12 @@ public class Score {
     private long id;
 
     private long filmid;
-    private int score;
+    private long score;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "gebruikerid")
     private Gebruiker gebruiker;
 
-    public Score(long filmid, int score, Gebruiker gebruiker) {
+    public Score(long filmid, Long score, Gebruiker gebruiker) {
         this.filmid = filmid;
         this.score = score;
         this.gebruiker = gebruiker;
@@ -32,7 +32,7 @@ public class Score {
         return filmid;
     }
 
-    public int getScore() {
+    public long getScore() {
         return score;
     }
 

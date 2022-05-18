@@ -19,6 +19,16 @@ public class Gebruiker {
     @OneToMany(mappedBy = "gebruiker")
     private List<Score> scores;
 
+    public Gebruiker(String familienaam, String voornaam, String email, String paswoord) {
+        this.familienaam = familienaam;
+        this.voornaam = voornaam;
+        this.email = email;
+        this.paswoord = paswoord;
+    }
+    protected Gebruiker() {
+
+    }
+
     public long getId() {
         return id;
     }
