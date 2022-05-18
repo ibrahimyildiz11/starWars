@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments::head(title='Film Zoeken')"></head>
+</head>
+<body>
+<div class="container">
+    <form th:object="${filmIdForm}" method="get" th:action="@{/films}">
+        <label>Nummer: <span th:errors="${filmIdForm.filmId}"></span><input
+                th:field="${filmIdForm.filmId}" autofocus required type="number" min="1"></label>
+        <button>Zoeken</button>
+    </form>
+    <p th:if="not ${film} and ${filmIdForm.filmId != null}">Film niet gevonden</p>
+    <form th:object="${filmIdForm}" th:action="@{/films/{id}(id=${filmIdForm.filmId})}" method="post">
+        <dl th:if="${film}" th:object="${film}">
+            <dt>Titel</dt>
+            <dd th:text="*{title}"></dd>
+            <dt>Regisseur</dt>
+            <dd th:text="*{director}"></dd>
+            <dt>Uitgekomen op</dt>
+            <dd th:text="*{releaseDate}"></dd>
+            <dt>Karakters</dt>
+            <dd>
+                <ul th:object="${people}">
+                    <li th:each="persoon:${people}" th:text="${persoon}"></li>
+                </ul>
+            </dd>
+        </dl>
+        <label th:if="${scoreForm} and ${film}">Score: <span th:errors="${scoreForm.score}"></span><input
+                th:field="${scoreForm.score}" autofocus required type="number" min="1" max="10"></label>
+        <button th:if="${scoreForm} and ${film}">Bewaren</button>
+        <div th:if="${score}">Je score voor deze film is <b><th:block th:text="${score}"></th:block></b>.</div>
+    </form>
+    </dl>
+</div>
+</body>
+</html>

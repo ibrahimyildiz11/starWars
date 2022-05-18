@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd"
+                 version="2.1">
+    <named-query name='Score.findScoreByGebruikerIdAndFilmid'>
+        <query>
+            select s from Score s join s.gebruiker g where s.gebruiker.id =
+            (select g.id from Gebruiker g where g.id = :id) and s.filmid = :idVanFilm
+        </query>
+    </named-query>
+    <named-query name='Score.findGemiddeldeScoreByFilmid'>
+        <query>
+            select avg(s.score) from Score s where s.filmid = :idVanFilm
+        </query>
+    </named-query>
+    <named-query name='Score.findDistinctFilmids'>
+        <query>
+            select distinct s.filmid from Score s order by s.filmid
+        </query>
+    </named-query>
+</entity-mappings>

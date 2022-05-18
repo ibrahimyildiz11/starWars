@@ -8,11 +8,18 @@ public class Score {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private long filmId;
+
+    private long filmid;
     private int score;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "gebruikerId")
+    @JoinColumn(name = "gebruikerid")
     private Gebruiker gebruiker;
+
+    public Score(long filmid, int score, Gebruiker gebruiker) {
+        this.filmid = filmid;
+        this.score = score;
+        this.gebruiker = gebruiker;
+    }
 
     protected Score() {
     }
@@ -21,8 +28,8 @@ public class Score {
         return id;
     }
 
-    public long getFilmId() {
-        return filmId;
+    public long getFilmid() {
+        return filmid;
     }
 
     public int getScore() {

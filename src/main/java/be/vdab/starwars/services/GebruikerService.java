@@ -5,6 +5,8 @@ import be.vdab.starwars.repositories.GebruikerRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @Transactional
 public class GebruikerService {
@@ -14,7 +16,8 @@ public class GebruikerService {
         this.gebruikerRepository = gebruikerRepository;
     }
 
-    public Gebruiker findByEmail(String email) {
+    @Transactional(readOnly = true)
+    public Optional<Gebruiker> findByEmail(String email) {
         return gebruikerRepository.findByEmail(email);
     }
 }
