@@ -12,6 +12,9 @@
             <a th:href="@{/gemiddeldescores}">Gemiddelde scores</a>
         </li>
     </ul>
+    <form sec:authorize="isAuthenticated()" method="post" th:action="@{/logout}">
+        <button><th:block sec:authentication="name"></th:block> uitloggen</button>
+    </form>
 </div>
 </body>
 </html>
