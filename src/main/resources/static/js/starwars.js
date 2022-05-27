@@ -51,3 +51,8 @@ function hideFouten() {
         div.hidden = true;
     }
 }
+
+//OM DOUBLE SUBMIT TE VERMIJDEN
+document.querySelector("form").onsubmit = function () {
+    this.querySelector("button").disabled = true;
+}
