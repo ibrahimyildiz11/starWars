@@ -3,7 +3,7 @@ package be.vdab.starwars.controllers;
 import be.vdab.starwars.domain.Score;
 import be.vdab.starwars.forms.FilmIdForm;
 import be.vdab.starwars.forms.ScoreForm;
-import be.vdab.starwars.restclients.SwaClient;
+import be.vdab.starwars.restclients.SwapiClient;
 import be.vdab.starwars.services.GebruikerService;
 import be.vdab.starwars.services.ScoreService;
 import org.springframework.stereotype.Controller;
@@ -23,11 +23,11 @@ import java.util.LinkedHashSet;
 @Controller
 @RequestMapping("films")
 class FilmController {
-    private final SwaClient client;
+    private final SwapiClient client;
     private final ScoreService scoreService;
     private final GebruikerService gebruikerService;
 
-    FilmController(SwaClient client, ScoreService scoreService, GebruikerService gebruikerService) {
+    FilmController(SwapiClient client, ScoreService scoreService, GebruikerService gebruikerService) {
         this.client = client;
         this.scoreService = scoreService;
         this.gebruikerService = gebruikerService;

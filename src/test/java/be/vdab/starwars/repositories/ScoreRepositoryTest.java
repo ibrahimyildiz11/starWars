@@ -29,7 +29,7 @@ class ScoreRepositoryTest extends AbstractTransactionalJUnit4SpringContextTests 
 
     @Test
     void findScoreByGebruikerIdAndFilmId() {
-        var score = scoreRepository.findScoreByGebruikerIdAndFilmid(idVanGebruikerTest(),1);
+        var score = scoreRepository.findScoreByGebruikerIdAndFilmid(idVanGebruikerTest(),11);
         assertThat(score.get().getScore()).isEqualTo(6);
     }
 

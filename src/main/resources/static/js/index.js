@@ -3,11 +3,11 @@ const filmsUrl = "http://localhost:8080/films";
 document.getElementById("zoeken").onclick = zoekFilm;
 
 async function zoekFilm() {
-    verbergFouten();
+    hideFouten();
     const filmResponse = await fetch(`${filmsUrl}/${document.getElementById("nummer").value}`);
     if (filmResponse.ok) {
         const film = await filmResponse.json();
-        toonDetailVan(film);
+        toonDetailVanFilm(film);
         zoekPeople(film);
     } else {
         if (filmResponse.status === 404) {
@@ -18,7 +18,7 @@ async function zoekFilm() {
     }
 }
 
-function toonDetailVan(film) {
+function toonDetailVanFilm(film) {
     document.getElementById("title").innerText = film.title;
     document.getElementById("director").innerText = film.director;
     document.getElementById("releaseDate").innerText = film.releaseDate;
@@ -26,7 +26,7 @@ function toonDetailVan(film) {
 
 async function zoekPeople(film) {
     const ul = document.getElementById("people");
-    verwijderAllChildElementenIn(ul);
+    deleteAllChildElementenIn(ul);
     const peopleResponse = await fetch(film._links.people.href);
     if (peopleResponse.ok) {
         const people = await peopleResponse.json();
@@ -40,13 +40,13 @@ async function zoekPeople(film) {
     }
 }
 
-function verwijderAllChildElementenIn(element) {
+function deleteAllChildElementenIn(element) {
     while (element.lastChild !== null) {
         element.lastChild.remove();
     }
 }
 
-function verbergFouten() {
+function hideFouten() {
     for (const div of document.querySelectorAll(".fout")) {
         div.hidden = true;
     }

@@ -2,6 +2,7 @@
 <html lang="nl" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments::head(title='Inloggen')"></head>
 <body>
+<nav th:replace="fragments::header"></nav>
 <div class="container">
     <h1>Inloggen</h1>
     <form th:action="@{/login}" method="post">

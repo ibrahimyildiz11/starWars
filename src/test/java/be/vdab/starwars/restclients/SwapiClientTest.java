@@ -6,10 +6,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-class SwaClientTest {
-    private final SwaClient client;
+class SwapiClientTest {
+    private final SwapiClient client;
 
-    SwaClientTest(SwaClient client) {
+    SwapiClientTest(SwapiClient client) {
         this.client = client;
     }
 

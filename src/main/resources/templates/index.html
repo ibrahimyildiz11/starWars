@@ -2,8 +2,9 @@
 <html lang="nl" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments::head(title='Welkompagina')"></head>
 <body>
+<nav th:replace="fragments::header"></nav>
 <div class="container" >
-    <h1>Star wars</h1>
+    <!--<h1>Star wars</h1>-->
     <ul>
         <li>
             <a th:href="@{/films/form}">Film zoeken</a>
@@ -13,31 +14,8 @@
         </li>
     </ul>
     <form sec:authorize="isAuthenticated()" method="post" th:action="@{/logout}">
-        <button><th:block sec:authentication="name"></th:block> uitloggen</button>
+        <button><th:block sec:authentication="name"></th:block> **UITLOGGEN** </button>
     </form>
 </div>
 </body>
 </html>
-
-<!--
-<!DOCTYPE html>
-<html lang="nl" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-    <meta charset="UTF-8">
-    <title>StarWars</title>
-    <link rel="stylesheet" th:href="@{/css/starwars.css}"></link>
-</head>
-<body>
-    <h1>Star Wars</h1>
-        <ul>
-            <li><a th:href="@{/film}">Film zoeken</a></li>
-            <li><a th:href="@{/score}">Gemiddelde scores</a></li>
-        </ul>
-    <li sec:authorize="isAnonymous()"><a th:href="@{/login}">Inloggen</a></li>
-    <form sec:authorize="isAuthenticated()" method="post" th:action="@{/logout}">
-        <button><th:block sec:authentication="name"></th:block> uitloggen</button>
-    </form>
-
-</body>
-</html>-->

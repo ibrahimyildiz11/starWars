@@ -10,11 +10,11 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import java.util.Optional;
 
 @Component
-public class SwaClient {
+public class SwapiClient {
     private final WebClient client;
     private final String filmURI;
 
-    public SwaClient(WebClient.Builder builder, @Value("${swapi.film}") String filmURI) {
+    public SwapiClient(WebClient.Builder builder, @Value("${swapi.film}") String filmURI) {
         client = builder.build();
         this.filmURI = filmURI;
     }
